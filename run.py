@@ -74,9 +74,8 @@ class Node(object):
             cpuinfo[name] = var
 
         return json.dumps(cpu, sort_keys=False, indent=4, separators=(',', ': '))
+
 #
-
-
 if "__main__" == __name__:
     settings = {
                 'global': {
@@ -94,14 +93,14 @@ if "__main__" == __name__:
                 }
         }
     
-    pidfile = os.path.join(cur_dir, "./", "cherrypy_pid.pid")
-    engine = cherrypy.engine
-    plugins.PIDFile(engine, pidfile).subscribe()
+    #pidfile = os.path.join(cur_dir, "./", "cherrypy_pid.pid")
+    #engine = cherrypy.engine
+    #plugins.PIDFile(engine, pidfile).subscribe()
 
     cherrypy.config.update(settings)
     cherrypy.tree.mount(Index(), '/')
     cherrypy.tree.mount(Node(), '/node')
 
-    d = Daemonizer(cherrypy.engine)
-    d.subscribe()
+    #d = Daemonizer(cherrypy.engine)
+    #d.subscribe()
     cherrypy.engine.start()
