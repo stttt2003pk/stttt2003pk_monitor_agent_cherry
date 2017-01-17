@@ -3,7 +3,7 @@ Installation
 Update and install some dependencies:
 
 yum -y update
-yum install -y httpd net-snmp perl pycairo mod_wsgi python-devel git gcc-c++
+yum install -y httpd net-snmp perl pycairo mod_wsgi python-devel git gcc-c++ pytz
 Add the EPEL repo from:
 
 http://www.unixmen.com/install-epel-repository-centos-rhel-7/
@@ -11,6 +11,7 @@ Install Python Package manager:
 
 yum install -y python-pip node npm
 I have installed the graphite within pip,
+pip install pytz
 
 pip install 'django<1.6'
 pip install 'Twisted<12'
@@ -55,7 +56,11 @@ You can run the graphite  server:
 
 
 
-wsgi apache deployment
+#wsgi apache deployment
+#remember to check the error log and find out the permission bug
+#remember to create the db not using root, because your apache always not running at root.if you restore the db again,you should try to restart the apache server
+#remember to pip intall pytz
+#remember to change the permision for apache to access the python lib
 
 # This needs to be in your server's config somewhere, probably
 # the main httpd.conf
