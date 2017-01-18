@@ -1,0 +1,74 @@
+[
+    {
+        "node": [
+            {
+                "outbytes": 0,
+                "inpkts": 252,
+                "inbytes": 15120,
+                "rs": "192.168.204.167:80",
+                "outpkts": 0,
+                "conns": 84
+            }
+        ],
+        "inpkts_sum": 252,
+        "outpkts_sum": 0,
+        "outbytes_sum": 0,
+        "vip": "192.168.100.91:80",
+        "inbytes_sum": 15120,
+        "conns_sum": 84
+    },
+    {
+        "node": [
+            {
+                "outbytes": 0,
+                "inpkts": 3,
+                "inbytes": 180,
+                "rs": "192.168.204.167:8888",
+                "outpkts": 0,
+                "conns": 1
+            }
+        ],
+        "inpkts_sum": 3,
+        "outpkts_sum": 0,
+        "outbytes_sum": 0,
+        "vip": "192.168.100.91:8888",
+        "inbytes_sum": 180,
+        "conns_sum": 1
+    },
+    {
+        "node": [
+            {
+                "outbytes": 0,
+                "inpkts": 6,
+                "inbytes": 360,
+                "rs": "192.168.204.167:80",
+                "outpkts": 0,
+                "conns": 2
+            }
+        ],
+        "inpkts_sum": 6,
+        "outpkts_sum": 0,
+        "outbytes_sum": 0,
+        "vip": "192.168.100.92:80",
+        "inbytes_sum": 360,
+        "conns_sum": 2
+    },
+    {
+        "node": [
+            {
+                "outbytes": 0,
+                "inpkts": 6,
+                "inbytes": 360,
+                "rs": "192.168.204.167:8888",
+                "outpkts": 0,
+                "conns": 2
+            }
+        ],
+        "inpkts_sum": 6,
+        "outpkts_sum": 0,
+        "outbytes_sum": 0,
+        "vip": "192.168.100.92:8888",
+        "inbytes_sum": 360,
+        "conns_sum": 2
+    }
+]

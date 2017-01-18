@@ -14,6 +14,8 @@ config_lvs_cluster_info.yaml
 
 # Distribution / packaging
 web_lvs/backend/keepalived_publish/
+data/
+tmp/
 .Python
 env/
 build/

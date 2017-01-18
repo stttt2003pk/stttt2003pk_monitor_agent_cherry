@@ -27,7 +27,7 @@ lvstraffic_result_file = os.path.join(cur_dir,'data/','lvstraffic')
 '''
 statsd_server = "192.168.204.117"
 statsd_port = 8125
-prefix = "lvs.stttt2003pk.csserver3.stttt2003pk.com"
+prefix = "stttt2003pk.lvs.192_168_204_117"
 
 
 class AgentDaemon():
@@ -112,7 +112,7 @@ class AgentDaemon():
         for line in lines[3:]:
             num = num + 1
             con = line.split()
-            if con[0] == "TCP" or con[0] == "UDP"
+            if con[0] == "TCP" or con[0] == "UDP":
                 if num == 1:
                     pass
                 else:
@@ -148,7 +148,59 @@ class AgentDaemon():
 
         return dict
             
-                
+    def lvstraffic(self):
+        if not os.path.isfile(lvstraffic_lastfile):
+            result = self.lvstraffic_resolve()
+            f = open(lvstraffic_lastfile, 'w')              
+            f.write(result)
+            f.close()
+            return None
+
+        last_result = json.loads(open(lvstraffic_lastfile).read())
+        now = self.lvstraffic_resolve()
+        now_result = json.loads(now)
+
+        f = open(lvstraffic_lastfile, 'w')
+        f.write(now)
+        f.close()
+
+        list = []
+
+        for vip_dict in now_result:
+            for last_vip_dict in last_result:
+                if vip_dict['vip'] == last_vip_dict['vip']:
+                    last_vip_value = last_vip_dict
+            if not last_vip_value:
+                continue
+
+            vip_per_dict = self.lvstraffic_count_per(last_vip_value, vip_dict)
+            list.append(vip_per_dict)
+            statsd_vip = vip_per_dict['vip']
+            _statsd_vip = statsd_vip.replace('.', '_').replace(':', '_')
+
+            self.push_statsd('vip.%s.conns' %(_statsd_vip), vip_per_dict['conns_sum_per'], 'time')
+            self.push_statsd('vip.%s.inpkts' %(_statsd_vip), vip_per_dict['inpkts_sum_per'], 'time')
+            self.push_statsd('vip.%s.outpkts' %(_statsd_vip), vip_per_dict['outpkts_sum_per'], 'time')
+            self.push_statsd('vip.%s.inbytes' %(_statsd_vip), vip_per_dict['inbytes_sum_per'], 'time')
+            self.push_statsd('vip.%s.outbytes' %(_statsd_vip), vip_per_dict['outbytes_sum_per'], 'time')
+
+        try:
+            f = open(lvstraffic_result_file, 'w')
+            f.write(json.dumps(list, sort_keys=False, indent=4, separators=(',', ': ')))
+            f.close()
+        except Exception, e:
+            return False
+
+    def run(self):
+        while True:
+            print "agent monitor test"
+            self.lvstraffic()
+            time.sleep(10)
+
+        
+if __name__== "__main__":
+    run_daemon = AgentDaemon()
+    run_daemon.run()
             
 
 
