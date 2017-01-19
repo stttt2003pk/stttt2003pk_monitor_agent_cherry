@@ -25,7 +25,7 @@ lvstraffic_result_file = os.path.join(cur_dir,'data/','lvstraffic')
 , backends: [ "./backends/graphite" ]
 }
 '''
-statsd_server = "192.168.204.117"
+statsd_server = "192.168.104.117"
 statsd_port = 8125
 prefix = "stttt2003pk.lvs.192_168_204_117"
 
