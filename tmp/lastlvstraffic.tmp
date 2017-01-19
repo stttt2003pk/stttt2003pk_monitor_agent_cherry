@@ -2,73 +2,37 @@
     {
         "node": [
             {
-                "outbytes": 0,
-                "inpkts": 252,
-                "inbytes": 15120,
-                "rs": "192.168.204.167:80",
-                "outpkts": 0,
-                "conns": 84
+                "outbytes": 204162382,
+                "inpkts": 34685,
+                "inbytes": 2170572,
+                "rs": "192.168.100.167:80",
+                "outpkts": 31278,
+                "conns": 3715
             }
         ],
-        "inpkts_sum": 252,
-        "outpkts_sum": 0,
-        "outbytes_sum": 0,
+        "inpkts_sum": 34685,
+        "outpkts_sum": 31278,
+        "outbytes_sum": 204162382,
         "vip": "192.168.100.91:80",
-        "inbytes_sum": 15120,
-        "conns_sum": 84
+        "inbytes_sum": 2170572,
+        "conns_sum": 3715
     },
     {
         "node": [
             {
-                "outbytes": 0,
-                "inpkts": 3,
-                "inbytes": 180,
-                "rs": "192.168.204.167:8888",
-                "outpkts": 0,
-                "conns": 1
+                "outbytes": 203944914,
+                "inpkts": 33770,
+                "inbytes": 2122758,
+                "rs": "192.168.100.167:80",
+                "outpkts": 30178,
+                "conns": 3712
             }
         ],
-        "inpkts_sum": 3,
-        "outpkts_sum": 0,
-        "outbytes_sum": 0,
-        "vip": "192.168.100.91:8888",
-        "inbytes_sum": 180,
-        "conns_sum": 1
-    },
-    {
-        "node": [
-            {
-                "outbytes": 0,
-                "inpkts": 6,
-                "inbytes": 360,
-                "rs": "192.168.204.167:80",
-                "outpkts": 0,
-                "conns": 2
-            }
-        ],
-        "inpkts_sum": 6,
-        "outpkts_sum": 0,
-        "outbytes_sum": 0,
+        "inpkts_sum": 33770,
+        "outpkts_sum": 30178,
+        "outbytes_sum": 203944914,
         "vip": "192.168.100.92:80",
-        "inbytes_sum": 360,
-        "conns_sum": 2
-    },
-    {
-        "node": [
-            {
-                "outbytes": 0,
-                "inpkts": 6,
-                "inbytes": 360,
-                "rs": "192.168.204.167:8888",
-                "outpkts": 0,
-                "conns": 2
-            }
-        ],
-        "inpkts_sum": 6,
-        "outpkts_sum": 0,
-        "outbytes_sum": 0,
-        "vip": "192.168.100.92:8888",
-        "inbytes_sum": 360,
-        "conns_sum": 2
+        "inbytes_sum": 2122758,
+        "conns_sum": 3712
     }
 ]

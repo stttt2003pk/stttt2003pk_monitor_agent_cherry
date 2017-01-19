@@ -9,23 +9,7 @@
     },
     {
         "inpkts_sum_per": 0,
-        "vip": "192.168.100.91:8888",
-        "conns_sum_per": 0,
-        "inbytes_sum_per": 0,
-        "outbytes_sum_per": 0,
-        "outpkts_sum_per": 0
-    },
-    {
-        "inpkts_sum_per": 0,
         "vip": "192.168.100.92:80",
-        "conns_sum_per": 0,
-        "inbytes_sum_per": 0,
-        "outbytes_sum_per": 0,
-        "outpkts_sum_per": 0
-    },
-    {
-        "inpkts_sum_per": 0,
-        "vip": "192.168.100.92:8888",
         "conns_sum_per": 0,
         "inbytes_sum_per": 0,
         "outbytes_sum_per": 0,
