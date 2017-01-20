@@ -45,9 +45,8 @@ class keepalived_log_analyze():
 
     #service disabled logging
     def service_is_disable(self, log):
-        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\w*):\s*Executing\s*\[ip\s*addr\s*del.*\]\s*\for\s*VS\s*\[(\S*)\]:\d+$')
+        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\S*)\[.*\]:\s*Executing\s*\[ip\s*addr\s*del.*\]\s*for\s*VS\s*\[(\S*)\]:\d+$')
         match = compile_log.match(log)
-        print match
 
         if match:
             log_group = match.groups()
@@ -67,7 +66,7 @@ class keepalived_log_analyze():
 
     #service enable logging
     def service_is_up(self, log):
-        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\w*):\s*Executing\s*\[ip\s*addr\s*add.*\]\s*for\s*VS\s*\[(\S*)\]:\d+$')
+        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\S*)\[.*\]:\s*Executing\s*\[ip\s*addr\s*add.*\]\s*for\s*VS\s*\[(\S*)\]:\d+$')
         match = compile_log.match(log)
 
         if match:
@@ -87,7 +86,7 @@ class keepalived_log_analyze():
             
     #real server enable logging
     def rs_is_enable(self, log):
-        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\w*):\s*(Enabling|Adding)\s*service\s*\[(\d+\.\d+\.\d+\.\d+)\]:(\d+)\s*to\s*VS \[(\S*)\]:\d+$')
+        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\S*)\[.*\]:\s*(Enabling|Adding)\s*service\s*\[(\d+\.\d+\.\d+\.\d+)\]:(\d+)\s*to\s*VS \[(\S*)\]:\d+$')
         match = compile_log.match(log)
 
         if match:
@@ -109,7 +108,7 @@ class keepalived_log_analyze():
 
     #real server disable logging
     def rs_is_disable(self, log):
-        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\w*):\s*(Removing|Disabling)\s*service\s*\[(\d+\.\d+\.\d+\.\d+)\]:(\d+)\s*from\s*VS\s*\[(\S*)\]:\d+$')
+        compile_log = re.compile(r'^(\w*)\s*(\d+)\s*(\d+:\d+:\d+)\s*(\S*)\s*(\S*)\[.*\]:\s*(Removing|Disabling)\s*service\s*\[(\d+\.\d+\.\d+\.\d+)\]:(\d+)\s*from\s*VS\s*\[(\S*)\]:\d+$')
         match = compile_log.match(log)
 
         if match:
