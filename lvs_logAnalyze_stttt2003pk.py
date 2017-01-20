@@ -29,3 +29,4 @@ class keepalived_log_analyze():
         self.file.seek(self.file_size)
 
 
+#
