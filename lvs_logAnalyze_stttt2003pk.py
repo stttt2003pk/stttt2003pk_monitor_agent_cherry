@@ -145,6 +145,52 @@ class keepalived_log_analyze():
             for line in lines:
                 self.handler(line)
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 job_queue = Queue.Queue(0)
 cur_dir = os.path.dirname(os.path.abspath(__file__))
 config = yaml.load(open(os.path.join(cur_dir,'config.yaml')))
