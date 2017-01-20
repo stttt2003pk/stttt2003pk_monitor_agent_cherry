@@ -17,7 +17,7 @@ class mysendmail():
         self.tolist = tolist
         self.subject = subject
 
-    def write_mail(self, sender, to_list, sub, content)
+    def write_mail(self, sender, to_list, sub, content):
         msg = MIMEText(content, _subtype='html', _charset='utf-8')
         msg['Subject'] = sub
         msg['From'] = sender
