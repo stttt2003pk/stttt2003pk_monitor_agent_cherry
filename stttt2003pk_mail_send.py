@@ -25,7 +25,7 @@ class mysendmail():
         
         return msg
 
-    def sendmail(self, content):
+    def send_mail(self, content):
         msg = self.write_mail(self.me, self.tolist, self.subject, content) 
         try:
             s = smtplib.SMTP()
@@ -36,7 +36,7 @@ class mysendmail():
             print 'mail sended'
             return True
         except Exception, e:
-            print 'mail failed'
+            print 'mail failed %s' % e
             return False
             
 

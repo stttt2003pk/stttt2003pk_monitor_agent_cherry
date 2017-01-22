@@ -226,6 +226,10 @@ class log_job_thread(threading.Thread):
                 <b>Descript：</b>%s
             </div>
 
+            <div>
+                <b>VIP：</b>%s
+            </div>
+
 
             <div>
                 <b>Owners: </b>%s
@@ -246,7 +250,7 @@ class log_job_thread(threading.Thread):
         '''
         content = html_template % (alert_time,cluster_id,lb_id,area,descript,vip,owners,rs,status,message,vip_instance,self.date)
 
-    def search_vip_from_infoyaml(self, vip_instance)
+    def search_vip_from_infoyaml(self, vip_instance):
         infoyaml = self.get_info_yaml()
         for vip in infoyaml['server']:
             if vip['vip_instance'] == vip_instance:
@@ -389,7 +393,7 @@ class log_job_thread(threading.Thread):
         self.add_rs_or_service_status(service_key,'disable')
         if service_status == 'enable' or service_status == 'pending':
             time_now = self.timestampnow()
-            print 'postdata'
+            #print 'postdata'
             self.post_alert_message_to_api(cluster_id,lb_id,area,descript,owners,rs,status,message,alert_type,time_now,vip_instance,vip,alert_time)
 
             admin_mail_group = infoyaml['admin_mail_group']
@@ -437,7 +441,7 @@ class log_job_thread(threading.Thread):
         service_status = self.search_rs_or_service_status(service_key)
 
         self.add_rs_or_service_status(service_key,'enable')
-        if service_status = 'disable':
+        if service_status == 'disable':
             time_now = self.timestampnow()
             self.post_alert_message_to_api(cluster_id,lb_id,area,descript,owners,rs,status,message,alert_type,time_now,vip_instance,vip,alert_time)
 
@@ -468,7 +472,7 @@ class log_job_thread(threading.Thread):
     def run(self):
         while True:
             time.sleep(1)
-            if self.jobq.qsize() > 0
+            if self.jobq.qsize() > 0:
                 job = self.jobq.get()
                 self._process_job(job) 
 

@@ -2,10 +2,10 @@
 keepalived_log_file: "/var/log/keepalived.log"
 logfile: "/var/log/lvs_logAnalyze_stttt2003pk.log"
 info_yaml_file: "/etc/keepalived/info.yaml"
-lvs_cluster_alert_api: "lvs.stttt2003pk.com/api/alert/"
+lvs_cluster_alert_api: "http://lvs.stttt2003pk.com/api/alert/"
 
 
-mail_host: "smtp.stttt2003pk.com"
+mail_host: "smtp.qq.com"
 mail_me: "stttt2003pk<414150392@qq.com>"
 
 
