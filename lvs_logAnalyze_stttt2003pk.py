@@ -531,7 +531,9 @@ class log_job_thread(threading.Thread):
 
 job_queue = Queue.Queue(0)
 cur_dir = os.path.dirname(os.path.abspath(__file__))
-config = yaml.load(open(os.path.join(cur_dir,'config.yaml')))
+config = yaml.load(open(os.path.join(cur_dir, 'config.yaml')))
+data_dir = os.path.join(cur_dir, 'data/')
+#
 alert_rs_status_file = os.path.join(data_dir,'alert_rs_status.dbm')
 
 if __name__ == '__main__':
