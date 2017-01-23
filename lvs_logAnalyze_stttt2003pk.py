@@ -97,13 +97,13 @@ class keepalived_log_analyze():
             lb_id = log_group[3]
             rs = "%s:%d" %(log_group[6],int(log_group[7]))
             vip_instance = log_group[8]
-            print 'RS:%s form %s is enable' %(rs,vip_instance)
+            print 'RS:%s from %s is enable' %(rs,vip_instance)
             job = {
                 "job_type":"run_rs_is_enable_action",
-                    "lb_id":lb_id,
-                    "vip_instance":vip_instance,
-                    "rs":rs,
-                    "alert_time":alert_time,
+                "lb_id":lb_id,
+                "vip_instance":vip_instance,
+                "rs":rs,
+                "alert_time":alert_time,
             }
 
             job_queue.put(job)
@@ -119,7 +119,7 @@ class keepalived_log_analyze():
             lb_id = log_group[3]
             rs = "%s:%d" %(log_group[6],int(log_group[7]))
             vip_instance = log_group[8]
-            print 'RS:%s form %s is disable' %(rs,vip_instance)
+            print 'RS:%s from %s is disable' %(rs,vip_instance)
 
             job = {
                 "job_type":"run_rs_is_disable_action",
@@ -128,6 +128,7 @@ class keepalived_log_analyze():
                 "rs":rs,
                 "alert_time":alert_time,
             }
+            job_queue.put(job)
 
 
     #handler
@@ -249,6 +250,7 @@ class log_job_thread(threading.Thread):
             <a href="http://lvs.stttt2003pk.com/lvsalert/?vip_instance=%s&date=%s">Go To The CMDB To View The Alert Message</a>
         '''
         content = html_template % (alert_time,cluster_id,lb_id,area,descript,vip,owners,rs,status,message,vip_instance,self.date)
+        return content
 
     def search_vip_from_infoyaml(self, vip_instance):
         infoyaml = self.get_info_yaml()
@@ -303,11 +305,11 @@ class log_job_thread(threading.Thread):
             mailhost = config['mail_host']
             mail_me = config['mail_me']
 
-            mail_subject = u'LVS Recovery Alert (Description:%s,Vip:%s,RealServer:%s)' %(descript,vip,rs)
+            mail_subject = u'Rs Recovery Alert (Description:%s,Vip:%s,RealServer:%s)' %(descript,vip,rs)
             content = self.write_mail_content(cluster_id,lb_id,area,descript,vip,owners,rs,status,message,vip_instance,alert_time)
             handler_mail = mysendmail(mailhost, mail_me,mailtolist, mail_subject)
             print 'rs:%s is enable, start sendmail' % rs
-            handler.send_mail(content)
+            handler_mail.send_mail(content)
 
     def run_rs_is_disable_action(self, job):
         lb_id = job['lb_id']
@@ -354,7 +356,7 @@ class log_job_thread(threading.Thread):
             mailhost = config['mail_host']
             mail_me = config['mail_me']
             
-            mail_subject = u'LVS Recovery Alert (Description:%s,Vip:%s,RealServer:%s)' %(descript,vip,rs)
+            mail_subject = u'LVS Rs Down Alert (Description:%s,Vip:%s,RealServer:%s)' %(descript,vip,rs)
             content = self.write_mail_content(cluster_id,lb_id,area,descript,vip,owners,rs,status,message,vip_instance,alert_time)
             handler_mail = mysendmail(mailhost,mail_me,mailtolist,mail_subject)
             print 'rs:%s is down, start sendmail' % rs
@@ -461,8 +463,10 @@ class log_job_thread(threading.Thread):
     def _process_job(self, job):
         job_type = job['job_type']
         if job_type == 'run_rs_is_enable_action':
+            print 1
             self.run_rs_is_enable_action(job)
         elif job_type == 'run_rs_is_disable_action':
+            print 2
             self.run_rs_is_disable_action(job)
         elif job_type == 'run_service_is_enable_action':
             self.run_service_is_enable_action(job)
@@ -474,6 +478,7 @@ class log_job_thread(threading.Thread):
             time.sleep(1)
             if self.jobq.qsize() > 0:
                 job = self.jobq.get()
+                print job
                 self._process_job(job) 
 
 

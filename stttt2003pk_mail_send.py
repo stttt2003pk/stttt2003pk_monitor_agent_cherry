@@ -3,6 +3,7 @@
 
 import smtplib
 from email.mime.text import MIMEText
+import yaml
 
 class mysendmail():
     def __init__(self, mailhost, me, tolist, subject):
@@ -16,6 +17,11 @@ class mysendmail():
         self.me = me
         self.tolist = tolist
         self.subject = subject
+        try:
+            self.person_info = yaml.load(open('/home/info/person_info.yaml', 'r'))
+        except Exception,e:
+            print 'could not get personnal_infomation cause by %s' %e
+
 
     def write_mail(self, sender, to_list, sub, content):
         msg = MIMEText(content, _subtype='html', _charset='utf-8')
@@ -30,6 +36,7 @@ class mysendmail():
         try:
             s = smtplib.SMTP()
             s.connect(self.mailhost)
+            s.login(self.person_info['username'], self.person_info['passwd'])
             s.sendmail(self.me, self.tolist, msg.as_string())
             s.close()
             
