@@ -463,10 +463,10 @@ class log_job_thread(threading.Thread):
     def _process_job(self, job):
         job_type = job['job_type']
         if job_type == 'run_rs_is_enable_action':
-            print 1
+            #print 1
             self.run_rs_is_enable_action(job)
         elif job_type == 'run_rs_is_disable_action':
-            print 2
+            #print 2
             self.run_rs_is_disable_action(job)
         elif job_type == 'run_service_is_enable_action':
             self.run_service_is_enable_action(job)
