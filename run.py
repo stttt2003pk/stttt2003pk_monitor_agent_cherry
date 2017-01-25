@@ -308,7 +308,11 @@ class Node(object):
                 Conn.append(dict)
         
         return json.dumps(Conn, sort_keys=False, indent=4, separators=(',', ': '))
-            
+
+    @cherrypy.expose
+    def GetLvsTraffic(self):
+        result = json.loads(open(os.path.join(cur_dir, 'data/', 'lvstraffic')).read())
+        return json.dumps(result, sort_keys=False, indent=4, separators=(',', ': '))
             
 
 
